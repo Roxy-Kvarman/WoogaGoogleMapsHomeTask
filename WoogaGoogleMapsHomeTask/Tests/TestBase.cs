@@ -55,7 +55,7 @@ namespace WoogaGoogleMapsHomeTask.Tests
 #else
             _reporter.LogInfo("SetUp -> Getting browser type from environment variable");
             var browser = Environment.GetEnvironmentVariable("BROWSER_TYPE");
-            browserType = (BrowserType)Enum.Parse(typeof(BrowserType), browser);
+            var browserType = (BrowserType)Enum.Parse(typeof(BrowserType), browser);
 #endif
             _reporter.LogInfo($"SetUp -> Creating driver [ {browserType} ]");
             _driver = DriverFactory.CreateDriver(browserType);
