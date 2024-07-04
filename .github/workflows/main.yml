@@ -39,9 +39,14 @@ jobs:
         run:
           dotnet test --configuration Release --no-build --verbosity normal --logger "trx;LogFileName=TestResults.trx" --results-directory Reports/TestResults/    
     
-      - name: Upload Extent Reports artifact
+      - name: Install ReportGenerator
+        run: dotnet tool install --global dotnet-reportgenerator-globaltool
+
+      - name: Generate HTML report
+        run: reportgenerator -reports:Reports/TestResults/*.trx -targetdir:Reports/TestResults/HTML -reporttypes:Html
+
+      - name: Upload HTML report
         uses: actions/upload-artifact@v4
-        if: success() || failure()
         with:
-         name: extent-reports
-         path: Reports/TestResults/
+          name: extent-reports
+          path: Reports/TestResults/HTML/
