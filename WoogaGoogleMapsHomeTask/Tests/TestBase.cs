@@ -51,14 +51,11 @@ namespace WoogaGoogleMapsHomeTask.Tests
 #if DEBUG
             _reporter.LogInfo("SetUp -> Reading config file");
             _config = FileHandler.GetFileData<Config>(_configFolderName, _configFileName);
-            var browserType = _config.Browser;
-
+            var browserType = _config.Browser;          
+#else
             _reporter.LogInfo("SetUp -> Getting browser type from environment variable");
             var browser = Environment.GetEnvironmentVariable("BROWSER_TYPE");
             browserType = (BrowserType)Enum.Parse(typeof(BrowserType), browser);
-#else
-            _reporter.LogInfo("SetUp -> Getting browser type from environment variable");
-            var browserType = Environment.GetEnvironmentVariable("BROWSER_TYPE");
 #endif
             _reporter.LogInfo($"SetUp -> Creating driver [ {browserType} ]");
             _driver = DriverFactory.CreateDriver(browserType);
