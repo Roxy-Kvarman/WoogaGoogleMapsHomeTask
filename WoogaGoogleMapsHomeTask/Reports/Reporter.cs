@@ -25,6 +25,7 @@ namespace WoogaGoogleMapsHomeTask.Reports
 #else
             reportPath = Path.Combine(TestContext.CurrentContext.WorkDirectory, _reportsFolderName, _testsResultsFolderName);
 #endif
+            Directory.CreateDirectory(reportPath);
             string fileName = $"ExtentReport_{DateTime.Now:yyyyMMdd_HHmmss}.html";
             string fullPath = Path.Combine(reportPath, fileName);
             var htmlReporter = new ExtentSparkReporter(fullPath);
