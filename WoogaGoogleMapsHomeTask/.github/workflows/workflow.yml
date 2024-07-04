@@ -1,0 +1,44 @@
+name: CI WoogaGoogleMapsTests
+
+on:
+  workflow_dispatch:
+    inputs:
+      browser:
+        description: "Browser type for tests (chrome, firefox)"
+        type: choice
+        default: chrome
+        options:
+        - "chrome"
+        - "firefox"
+        - "edge"
+        required: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup .NET Core SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0'
+
+      - name: Restore dependencies
+        run: dotnet restore     
+
+      - name: Build and Run Tests
+        env:
+          BROWSER_TYPE: ${{ github.event.inputs.browser }}
+        run:
+          dotnet build --configuration Release --no-restore
+          dotnet test --no-build --verbosity normal     
+    
+      - name: Upload Extent Reports artifact
+        uses: actions/upload-artifact@v4
+        if: success() || failure()
+        with:
+         name: extent-reports
+         path: Reports/TestResults/

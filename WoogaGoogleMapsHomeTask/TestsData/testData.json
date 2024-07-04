@@ -1,0 +1,30 @@
+﻿{
+  "Valid data": [
+    {
+      "expected_full_address": "Saarbrücker Str. 38, 10405 Berlin, Germany",
+      "expected_short_address": "Saarbrücker Str. 38"
+    },
+    {
+      "expected_full_address": "Bernauer Str. 111, 13355 Berlin, Germany",
+      "expected_short_address": "Bernauer Str. 111"
+    },
+    {
+      "expected_full_address": "Leipziger Pl. 12, 10117 Berlin, Germany",
+      "expected_short_address": "Leipziger Pl. 12"
+    },
+    {
+      "expected_full_address": "Lützowpl. 17, 10785 Berlin, Germany",
+      "expected_short_address": "Lützowpl. 17"
+    },
+    {
+      "expected_full_address": "Lützowpl. 1, 10785 Berlin, Germany",
+      "expected_short_address": "Lützowpl. 17"
+    }
+  ],
+  "Invalid data": [
+    {
+      "address": "NotExisting Str. 0, 000, 0000",
+      "error_message": "Google Maps can't find NotExisting Str. 0, 000, 0000"
+    }
+  ]
+}
