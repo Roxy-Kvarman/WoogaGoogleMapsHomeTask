@@ -37,19 +37,11 @@ jobs:
         env:
           BROWSER_TYPE: ${{ github.event.inputs.browser }}
         run:
-          dotnet test --configuration Release --no-build --verbosity normal --logger "trx;LogFileName=TestResults.trx" --results-directory Reports/TestResults/    
-    
-      - name: Install ReportGenerator
-        if: ${{ always() }}
-        run: dotnet tool install --global dotnet-reportgenerator-globaltool
-
-      - name: Generate HTML report
-        if: ${{ always() }}
-        run: reportgenerator -reports:Reports/TestResults/*.trx -targetdir:Reports/TestResults/HTML -reporttypes:Html
-
-      - name: Upload HTML report
-        if: ${{ always() }}
+          dotnet test --configuration Release --no-build --verbosity normal --results-directory Reports/TestResults/   
+          
+      - name: Upload Extent Reports artifact
         uses: actions/upload-artifact@v4
+        if: ${{ always() }}
         with:
-          name: extent-reports
-          path: Reports/TestResults/HTML/
+         name: extent-reports
+         path: Reports/TestResults/
