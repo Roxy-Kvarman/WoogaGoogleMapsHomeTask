@@ -24,7 +24,7 @@
   "Invalid data": [
     {
       "address": "NotExisting Str. 0, 000, 0000",
-      "error_message": "Google Maps can't find NotExisting Str. 0, 000, 0000\r\nMake sure your search is spelled correctly. Try adding a city, state, or zip code.\r\nTry Google Search instead\r\nShould this place be on Google Maps?\r\nAdd a missing place"
+      "error_message": "Google Maps can't find NotExisting Str. 0, 000, 0000"
     }
   ]
 }

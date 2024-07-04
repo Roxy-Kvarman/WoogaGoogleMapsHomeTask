@@ -29,7 +29,8 @@ namespace WoogaGoogleMapsHomeTask.Pages
         public string GetSearchAddressError()
         {
             var pane = GetAddressPane();
-            return pane.Text;
+            var text = pane.Text.Split("\r")[0];
+            return text.Split("\n")[0];
         }
 
         /// <summary>
