@@ -39,11 +39,10 @@ jobs:
         run:
           dotnet test --configuration Release --no-build --verbosity normal --logger "trx;LogFileName=TestResults.trx" --results-directory Reports/TestResults/   
           
-      - name: Upload Extent Reports artifact
+      - name: Upload tests results
         uses: dorny/test-reporter@v1
         if: always()
         with:
          name: Tests results
          path: "Reports/TestResults/TestResults.trx"
          reporter: dotnet-trx
-         fail-on-error: true
