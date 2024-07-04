@@ -29,11 +29,14 @@ jobs:
       - name: Restore dependencies
         run: dotnet restore     
 
-      - name: Build and Run Tests
+      - name: Build project
+        run:
+          dotnet build --configuration Release --no-restore
+          
+      - name: Run tests
         env:
           BROWSER_TYPE: ${{ github.event.inputs.browser }}
         run:
-          dotnet build --configuration Release --no-restore
           dotnet test --no-build --verbosity normal     
     
       - name: Upload Extent Reports artifact
