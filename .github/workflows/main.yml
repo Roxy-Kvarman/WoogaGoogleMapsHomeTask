@@ -37,11 +37,13 @@ jobs:
         env:
           BROWSER_TYPE: ${{ github.event.inputs.browser }}
         run:
-          dotnet test --configuration Release --no-build --verbosity normal --results-directory Reports/TestResults/   
+          dotnet test --configuration Release --no-build --verbosity normal --logger "trx;LogFileName=TestResults.trx" --results-directory Reports/TestResults/   
           
       - name: Upload Extent Reports artifact
-        uses: actions/upload-artifact@v4
-        if: ${{ always() }}
+        uses: dorny/test-reporter@v4
+        if: always()
         with:
-         name: extent-reports
-         path: Reports/TestResults/
+         name: Tests results
+         path: "Reports/TestResults/TestResults.trx"
+         reporter: dotnet-trx
+         fail-on-error: true
