@@ -14,7 +14,7 @@ on:
         required: true
 
 jobs:
-  build:
+  Test_run:
     runs-on: ubuntu-latest
 
     steps:
@@ -43,7 +43,7 @@ jobs:
         uses: dorny/test-reporter@v1
         if: always()
         with:
-         name: Tests results
+         name: Publish test report
          path: "Reports/TestResults/TestResults.trx"
          reporter: dotnet-trx
          fail-on-error: false
