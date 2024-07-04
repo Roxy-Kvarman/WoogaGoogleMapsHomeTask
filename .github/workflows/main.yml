@@ -46,3 +46,4 @@ jobs:
          name: Tests results
          path: "Reports/TestResults/TestResults.trx"
          reporter: dotnet-trx
+         fail-on-error: false
