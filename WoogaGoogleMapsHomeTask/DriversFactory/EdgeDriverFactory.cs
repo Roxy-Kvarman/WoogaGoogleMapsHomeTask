@@ -18,6 +18,7 @@ namespace WoogaGoogleMapsHomeTask.DriversFactory
             new DriverManager().SetUpDriver(new EdgeConfig());
             EdgeOptions options = new EdgeOptions();
 #if RELEASE
+            // for running in pipeline in Release mode
             options.AddArgument("--headless");
 #endif
             return new EdgeDriver(options);

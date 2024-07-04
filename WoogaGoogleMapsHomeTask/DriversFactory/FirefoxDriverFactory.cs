@@ -18,6 +18,7 @@ namespace WoogaGoogleMapsHomeTask.DriversFactory
             new DriverManager().SetUpDriver(new FirefoxConfig());
             FirefoxOptions options = new FirefoxOptions();
 #if RELEASE
+            // for running in pipeline in Release mode
             options.AddArgument("--headless");
 #endif
             return new FirefoxDriver(options);

@@ -23,6 +23,7 @@ namespace WoogaGoogleMapsHomeTask.DriversFactory
             options.AddArguments("--no-sandbox");
             options.AddArgument("--incognito");
 #if RELEASE
+            // for running in pipeline in Release mode
             options.AddArgument("--headless");
 #endif
             return new ChromeDriver(options);

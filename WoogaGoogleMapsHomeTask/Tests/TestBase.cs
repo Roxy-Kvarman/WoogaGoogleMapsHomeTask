@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using WoogaGoogleMapsHomeTask.DriversFactory;
 using WoogaGoogleMapsHomeTask.Reports;
 using WoogaGoogleMapsHomeTask.Utilities;
+using System.Drawing;
 
 namespace WoogaGoogleMapsHomeTask.Tests
 {
@@ -49,10 +50,12 @@ namespace WoogaGoogleMapsHomeTask.Tests
         {
             _reporter.StartTest(TestContext.CurrentContext.Test.MethodName);
 #if DEBUG
+            // for running locally in Debug mode
             _reporter.LogInfo("SetUp -> Reading config file");
             _config = FileHandler.GetFileData<Config>(_configFolderName, _configFileName);
             var browserType = _config.Browser;
 #else
+            // for running in pipeline in Release mode
             _reporter.LogInfo("SetUp -> Getting browser type from environment variable");
             var browser = Environment.GetEnvironmentVariable("BROWSER_TYPE");
             var browserType = EnumHandler.ParseEnum<BrowserType>(browser);
@@ -62,7 +65,13 @@ namespace WoogaGoogleMapsHomeTask.Tests
 
             _reporter.LogInfo($"SetUp -> Going to url [ {_mainUrl} ]");
             _driver.Url = _mainUrl;
+#if DEBUG
+            // for running locally in Debug mode
             _driver.Manage().Window.Maximize();
+#else
+            // for running in pipeline in Release mode
+            _driver.Manage().Window.Size = new Size(1920, 1080);
+#endif
 
             SeleniumExtensions.WaitUntil(_driver, ExpectedConditions.TitleContains(_mainTitle));
         }

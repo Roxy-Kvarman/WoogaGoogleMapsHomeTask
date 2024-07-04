@@ -1,5 +1,6 @@
 ﻿using AventStack.ExtentReports;
 using AventStack.ExtentReports.Reporter;
+using System.Diagnostics;
 
 namespace WoogaGoogleMapsHomeTask.Reports
 {
@@ -21,8 +22,10 @@ namespace WoogaGoogleMapsHomeTask.Reports
         {
             string reportPath = string.Empty;
 #if DEBUG
+            // for running locally in Debug mode
             reportPath = Path.Combine(TestContext.CurrentContext.WorkDirectory, @"..\..\..\", _reportsFolderName, _testsResultsFolderName);
 #else
+            // for running in pipeline in Release mode
             reportPath = Path.Combine(TestContext.CurrentContext.WorkDirectory, _reportsFolderName, _testsResultsFolderName);
 #endif
             Directory.CreateDirectory(reportPath);
