@@ -30,7 +30,7 @@ namespace WoogaGoogleMapsHomeTask.Pages
         {
             var pane = GetAddressPane();
             var text = pane.Text;
-            return text.Split("\r\n")[0];
+            return text.Split("\r")[0];
         }
 
         /// <summary>
