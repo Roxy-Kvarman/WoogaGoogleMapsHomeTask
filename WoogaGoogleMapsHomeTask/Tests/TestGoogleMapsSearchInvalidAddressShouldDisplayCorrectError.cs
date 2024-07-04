@@ -11,7 +11,7 @@ namespace WoogaGoogleMapsHomeTask.Tests
         /// It uses parameterized approach and receives test data from testData.json
         /// </summary>
         [Test, TestCaseSource(typeof(TestDataProvider), nameof(TestDataProvider.GetInvalidData))]
-        public void TestGoogleMapsSearchInvalidAddressShouldFail_2(string address, string errorMessage)
+        public void TestGoogleMapsSearchInvalidAddressShouldDisplayCorrectError_2(string address, string errorMessage)
         {
             _reporter.LogInfo($"Home page -> Search address [ {address} ]");
 
