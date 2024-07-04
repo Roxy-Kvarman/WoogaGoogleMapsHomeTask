@@ -40,7 +40,7 @@ jobs:
           dotnet test --configuration Release --no-build --verbosity normal --logger "trx;LogFileName=TestResults.trx" --results-directory Reports/TestResults/   
           
       - name: Upload Extent Reports artifact
-        uses: dorny/test-reporter@v4
+        uses: dorny/test-reporter@v1
         if: always()
         with:
          name: Tests results
