@@ -11,7 +11,6 @@
 
 	<ItemGroup>
 		<None Remove="config.json" />
-		<None Remove="Reports\TestResults\ExtentReport_20240703_205427.html" />
 		<None Remove="TestsData\testData.json" />
 	</ItemGroup>
 	
@@ -53,10 +52,6 @@
 
   <ItemGroup>
     <Folder Include="Reports\TestResults\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include=".github\workflows\workflow.yml" />
   </ItemGroup>
 
 </Project>
