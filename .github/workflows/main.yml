@@ -37,7 +37,7 @@ jobs:
         env:
           BROWSER_TYPE: ${{ github.event.inputs.browser }}
         run:
-          dotnet build --configuration Release --no-build --verbosity normal     
+          dotnet test --configuration Release --no-build --verbosity normal     
     
       - name: Upload Extent Reports artifact
         uses: actions/upload-artifact@v4
